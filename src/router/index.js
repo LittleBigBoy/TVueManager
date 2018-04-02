@@ -42,7 +42,39 @@ export const constantRouterMap = [
     ]
   }
 ]
+
 export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
+
+
+export const asyncRouterMap=[
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/index',
+    meta: { roles: ['admin'] }, // you can set roles in root nav
+    children: [{
+      path: 'index',
+      component: _import('permission/index'),
+      name: 'permission',
+      meta: {
+        title: 'permission',
+        icon: 'lock',
+        roles: ['admin'] // or you can only set roles in sub nav
+      }
+    }]
+  },
+  {
+    path: '/icon',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('svg-icons/index'),
+      name: 'icons',
+      meta: { title: 'icons', icon: 'icon', noCache: true }
+    }]
+  }
+]
+

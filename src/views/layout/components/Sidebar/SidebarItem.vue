@@ -33,7 +33,7 @@
 import { generateTitle } from "@/utils/i18n";
 
 export default {
-  name: "SidebarItem",
+  name: 'SidebarItem',
   props: {
     routes: {
       type: Array
@@ -55,5 +55,5 @@ export default {
     },
     generateTitle
   }
-};
+}
 </script>

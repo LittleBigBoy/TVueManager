@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import i18n from './lang'
+//import './permission'
 import './icons'
 
 Vue.use(Element,{
