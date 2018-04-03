@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     sidebar() {
-      return this.$store.state.app.sidebar
+      return this.$store.getters.sidebar
     }
   }
 }

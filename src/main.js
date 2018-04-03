@@ -4,6 +4,8 @@ import Vue from 'vue'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import '@/styles/index.scss' // 全局引用 css
+
 import App from './App'
 import router from './router'
 import store from './store'

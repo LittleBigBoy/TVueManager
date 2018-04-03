@@ -1,12 +1,12 @@
 <template>
-  <div class="frontpage-container">
+  <div class="dashboard-container">
       {{msg}}
   </div>
 </template>
 
 <script>
 export default {
-  name: "frontpage",
+  name: "dashboard",
   data() {
     return {
       msg: "Im frontpage!"

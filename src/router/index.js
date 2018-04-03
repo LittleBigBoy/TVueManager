@@ -27,19 +27,31 @@ export const constantRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect: 'frontpage',
+    redirect: 'dashboard',
     children: [
       {
-        path: 'frontpage',
-        component: _import('frontpage/index'),
-        name: 'frontpage',
+        path: 'dashboard',
+        component: _import('dashboard/index'),
+        name: 'dashboard',
         meta: {
-          title: 'frontpage',
-          icon: 'frontpage',
+          title: 'dashboard',
+          icon: 'dashboard',
           noCache: true
         }
       }
     ]
+  },
+  {
+    path: '/ordermanage',
+    component: Layout,
+    redirect: 'noredirect',
+    meta: {
+      title: 'ordermanage',
+      icon: 'ordermanage'
+    },
+    children: [{
+      path: 'orderList', component: _import('ordermanage/orderList'), name: 'orderList', meta: { title: 'orderList' }
+    }]
   }
 ]
 
@@ -49,7 +61,7 @@ export default new Router({
 })
 
 
-export const asyncRouterMap=[
+export const asyncRouterMap = [
   {
     path: '/permission',
     component: Layout,
