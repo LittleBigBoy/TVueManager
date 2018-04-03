@@ -1,7 +1,7 @@
 <template>
     <div class="menu-wrapper">
        <template v-for="item in routes" v-if="!item.hidden&&item.children">
-           <router-link v-if="itme.children.length===1&&!item.children[0].children&&!item.alwaysShow" v-bind:to="item.path+'/'+item.children[0].path" v-bind:key="item.children[0].name">
+           <router-link v-if="item.children.length===1&&!item.children[0].children&&!item.alwaysShow" v-bind:to="item.path+'/'+item.children[0].path" v-bind:key="item.children[0].name">
                 <el-menu-item v-bind:index="item.path+'/'+item.children[0].path" v-bind:class="{'submenu-title-noDropdown':!isNest}">
                   <svg-icon v-if="item.children[0].meta&&item.children[0].meta.icon" v-bind:icon-class="item.children[0].meta.icon"></svg-icon>>
                   <span v-if="item.children[0].meta&&item.children[0].meta.title">{{generateTitle(item.children[0].meta.title)}}</span>
