@@ -27,7 +27,7 @@ export const constantRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect: 'dashboard',
+    redirect:'dashboard',
     children: [
       {
         path: 'dashboard',
@@ -45,13 +45,15 @@ export const constantRouterMap = [
     path: '/ordermanage',
     component: Layout,
     redirect: 'noredirect',
+    name: 'ordermanage',
     meta: {
       title: 'ordermanage',
-      icon: 'ordermanage'
+      icon: 'documentation'
     },
-    children: [{
-      path: 'orderList', component: _import('ordermanage/orderList'), name: 'orderList', meta: { title: 'orderList' }
-    }]
+    children: [
+      { path: 'orderlist', component: _import('ordermanage/orderList'), name: 'orderlist', meta: { title: 'orderlist' } },
+      { path: 'orderlistadmin', componet: _import('ordermanage/orderchildlist'), name: 'orderlistadmin', meta: { title: 'orderlistadmin' } }
+    ]
   }
 ]
 

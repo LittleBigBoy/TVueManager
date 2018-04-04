@@ -46,7 +46,10 @@ export default {
       exportZip: 'Export Zip',
       theme: 'Theme',
       clipboardDemo: 'Clipboard',
-      i18n: 'I18n'
+      i18n: 'I18n',
+      ordermanage:'Order Manage',
+      orderlist:'OrderList',
+      orderlistadmin:'OrderListAdmin'
     },
     navbar: {
       logOut: 'Log Out',

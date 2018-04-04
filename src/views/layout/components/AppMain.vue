@@ -4,7 +4,7 @@
           <keep-alive v-bind:include="cacheViews">
               <router-view></router-view>
           </keep-alive>
-          </transition>>
+          </transition>
   </section>
 </template>
 
@@ -16,5 +16,5 @@ export default {
       return this.$store.state.tagsView.cacheViews;
     }
   }
-}
+};
 </script>

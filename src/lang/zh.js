@@ -46,7 +46,10 @@ export default {
       exportZip: 'Export Zip',
       theme: '换肤',
       clipboardDemo: 'Clipboard',
-      i18n: '国际化'
+      i18n: '国际化',
+      ordermanage:'订单管理',
+      orderlist:'订单列表',
+      orderlistadmin:'订单列表(管理员)'
     },
     navbar: {
       logOut: '退出登录',
