@@ -13,8 +13,8 @@ import router from './router'
 import store from './store'
 
 import i18n from './lang'
-//import './permission'
 import './icons'
+import './permission'
 
 Vue.use(Element,{
   size:'medium',//设置elementui默认字体大小
