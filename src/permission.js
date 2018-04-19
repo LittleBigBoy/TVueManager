@@ -22,7 +22,7 @@ const whiteList = ['/login']
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    if (getToken()) {//存在token
+    if (getToken('staffid') && getToken('adminToken') && getToken('timestamp')) {//存在token
         if (to.path === '/login') {//跳转login页面，直接跳转首页
             next({ path: '/' })
             NProgress.done()
@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
             NProgress.done()
         }
     }
-  
+
 })
 
 router.afterEach(() => {

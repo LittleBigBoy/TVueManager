@@ -30,7 +30,7 @@
 
 <script>
 import LangSelect from "@/components/LangSelect";
-
+import { getToken, setToken } from "@/utils/auth";
 export default {
   components: { LangSelect },
   name: "login",
@@ -38,7 +38,8 @@ export default {
     return {
       loginForm: {
         username: "",
-        password: ""
+        password: "",
+        timestamp: new Date().getTime()
       },
       loginRules: {
         username: [
@@ -64,17 +65,28 @@ export default {
   methods: {
     showPwd() {
       if (this.passwordType === "password") {
-        this.passwordType = ""
-        this.eyeIcon = "eye-open"
+        this.passwordType = "";
+        this.eyeIcon = "eye-open";
       } else {
-        this.passwordType = "password"
-        this.eyeIcon = "eye"
+        this.passwordType = "password";
+        this.eyeIcon = "eye";
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
+          this.$store
+            .dispatch("LoginByUsername", this.loginForm)
+            .then(() => {
+              this.loading = false;
+              setToken("staffid", this.loginForm.username);
+              setToken("timestamp", this.loginForm.timestamp);
+              this.$router.push({ path: "/" });
+            })
+            .catch(() => {
+              this.loading = false;
+            })
         } else {
           this.$message({
             message: this.$t("tips.loginErrorMessage"),
@@ -146,7 +158,6 @@ $light_gray: #eee;
       &:first-of-type {
         margin: 0 5px;
         float: right;
-
       }
     }
   }
