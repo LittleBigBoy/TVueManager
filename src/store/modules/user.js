@@ -1,8 +1,9 @@
-
+import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
     state: {
         avater: '',
+        token: getTokens(),
         roles: []
     },
     mutations: {
@@ -22,6 +23,9 @@ const user = {
                 commit('SET_ROLES', role)
                 resolve()
             })
+        },
+        GetTokens({ commit, state }) {
+
         }
     }
 }
