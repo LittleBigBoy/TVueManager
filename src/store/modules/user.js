@@ -1,4 +1,4 @@
-import {loginByUsername} from '@/api/login'
+import { loginByUsername } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -41,12 +41,12 @@ const user = {
             const password = LoginForm.password
             const timestamp = LoginForm.timestamp
             return new Promise((resolve, reject) => {
-                loginByUsername(username, password).then(response => {
+                loginByUsername(username, password, timestamp).then(response => {
                     const data = response.data
                     commit('SET_ADMINTOKEN', data)
                     setToken('adminToken', data)
                     resolve()
-                }).catch(error=>{
+                }).catch(error => {
                     console.log(error)
                     reject(error)
                 })
