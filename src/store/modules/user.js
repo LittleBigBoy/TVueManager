@@ -83,7 +83,7 @@ const user = {
                         removeToken('timestamp')
                         commit('SET_ADMINTOKEN', '')
                         removeToken('adminToken')
-                        resolve()
+                        resolve()  
                     }
                 })
             })
