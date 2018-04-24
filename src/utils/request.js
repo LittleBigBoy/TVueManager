@@ -11,10 +11,10 @@ const service = axios.create({
 
 // request interceptor
 service.interceptors.request.use(config => {
-    if (store.getters.staffid && store.getters.adminToken && store.getters.timestamp) {
-        config.headers['staffid'] = store.getters.staffid
+    if (store.getters.username && store.getters.adminToken && store.getters.timestamp) {
+        config.headers['username'] = store.getters.username
         config.headers['adminToken'] = store.getters.adminToken
-        config.headers['timestamp'] = stroe.getters.timestamp
+        config.headers['timestamp'] = store.getters.timestamp
     }
     return config
 },
@@ -25,8 +25,18 @@ service.interceptors.request.use(config => {
 
 // response interceptor
 service.interceptors.response.use(response => {
-    const res = response.data;
-    console.log(res);
+    const res = response.data
+    console.log(res)
+    if (res.StatusCode !== 200) {
+        Message({
+            message: res.Info,
+            type: 'error',
+            duration: 5 * 1000
+        })
+        return Promise.reject('error')
+    }
+    return response.data
+
 },
     error => {
         console.log(error)

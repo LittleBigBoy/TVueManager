@@ -22,22 +22,38 @@ const whiteList = ['/login']
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    if (getToken('staffid') && getToken('adminToken') && getToken('timestamp')) {//存在token
+    if (getToken('username') && getToken('adminToken') && getToken('timestamp')) {//存在token
         if (to.path === '/login') {//跳转login页面，直接跳转首页
             next({ path: '/' })
             NProgress.done()
         }
         else {
             if (store.getters.roles.length === 0) {
-
+                store.dispatch('GetUserInfo').then(res => {
+                    const roles = res.Roles
+                    store.dispatch('GenerateRoutes', { roles }).then(() => {
+                        router.addRoutes(store.getters.addRouters)
+                        next({ ...to, replace: true })
+                    })
+                }).catch(() => {
+                    next({ path: '/login' })
+                })
+                //next()
+            }
+            else {
+                if (hasPermission(store.getters.roles, to.meta.roles)) {
+                    next()//
+                } else {
+                    next({ path: '/401', replace: true, query: { noGoBack: true } })
+                }
             }
         }
     }
     else {
-        if (whiteList.indexOf(to.path) !== -1) {
+        if (whiteList.indexOf(to.path) !== -1) {//免登录白名单，直接进入
             next()
         }
-        else {
+        else {//其他全部进入登录页面
             next({ path: '/login' })
             NProgress.done()
         }

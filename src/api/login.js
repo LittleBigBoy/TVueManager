@@ -15,3 +15,20 @@ export function loginByUsername(userName, passWord, timestamp) {
         params
     })
 }
+
+export function loginOut(userName) {
+    return request({
+        url: 'api/Account/loginout',
+        method: 'post',
+        params: { userName }
+    })
+}
+
+export function getUserInfo(userName) {
+    const params = { userName }
+    return request({
+        url: 'api/Account/getuserinfo',
+        method: 'get',
+        params
+    })
+}

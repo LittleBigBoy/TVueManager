@@ -66,7 +66,7 @@ export default {
     showPwd() {
       if (this.passwordType === "password") {
         this.passwordType = "";
-        this.eyeIcon = "eye-open";
+        this.eyeIcon = "eyeopen";
       } else {
         this.passwordType = "password";
         this.eyeIcon = "eye";
@@ -80,8 +80,6 @@ export default {
             .dispatch("LoginByUsername", this.loginForm)
             .then(() => {
               this.loading = false;
-              setToken("staffid", this.loginForm.username);
-              setToken("timestamp", this.loginForm.timestamp);
               this.$router.push({ path: "/" });
             })
             .catch(() => {
