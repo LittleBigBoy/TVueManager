@@ -27,7 +27,7 @@ export const constantRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect:'dashboard',
+    redirect: 'dashboard',
     children: [
       {
         path: 'dashboard',
@@ -40,21 +40,8 @@ export const constantRouterMap = [
         }
       }
     ]
-  },
-  {
-    path: '/ordermanage',
-    component: Layout,
-    redirect: 'noredirect',
-    name: 'ordermanage',
-    meta: {
-      title: 'ordermanage',
-      icon: 'documentation'
-    },
-    children: [
-      { path: 'orderlist', component: _import('ordermanage/orderList'), name: 'orderlist', meta: { title: 'orderlist' } },
-      { path: 'orderlistadmin', componet: _import('ordermanage/orderchildlist'), name: 'orderlistadmin', meta: { title: 'orderlistadmin' } }
-    ]
   }
+
 ]
 
 export default new Router({
@@ -79,6 +66,20 @@ export const asyncRouterMap = [
         roles: ['admin'] // or you can only set roles in sub nav
       }
     }]
+  },
+  {
+    path: '/ordermanage',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'ordermanage',
+    meta: {
+      title: 'ordermanage',
+      icon: 'documentation'
+    },
+    children: [
+      { path: 'orderlist', component: _import('ordermanage/orderList'), name: 'orderlist', meta: { title: 'orderlist', icon: 'documentation' } },
+      { path: 'orderlistadmin', componet: _import('ordermanage/orderchildlist'), name: 'orderlistadmin', meta: { title: 'orderlistadmin', icon: 'documentation', roles: ['admin'] } }
+    ]
   },
   {
     path: '/icon',
